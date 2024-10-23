@@ -13,10 +13,12 @@ import chainlit as cl  # importing chainlit for our app
 from langchain.schema.runnable import Runnable
 from langchain.schema.runnable.config import RunnableConfig
 from typing import cast
-# from chainlit.prompt import Prompt, PromptMessage  # importing prompt tools
-# from chainlit.playground.providers import ChatOpenAI  # importing ChatOpenAI tools
+from uuid import uuid4
 
 load_dotenv()
+
+os.environ["LANGCHAIN_TRACING_V2"] = "true"
+os.environ["LANGCHAIN_PROJECT"] = f"AgenticRealEstate - {uuid4().hex[0:8]}"
 
 # Environment variables
 open_ai_key = os.getenv("OPENAI_API_KEY")
